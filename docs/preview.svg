@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" viewBox="0 0 640 300">
+  <rect width="640" height="300" rx="20" fill="#f3f5f9"/>
+
+  <!-- 服务器列表卡片 -->
+  <rect x="34" y="40" width="300" height="220" rx="16" fill="#ffffff" stroke="#b7c3d2" stroke-width="2"/>
+  <rect x="54" y="60" width="96" height="11" rx="5.5" fill="#247bbf"/>
+  <rect x="54" y="80" width="150" height="8" rx="4" fill="#cfd9e5"/>
+  <rect x="262" y="56" width="52" height="20" rx="10" fill="#247bbf"/>
+
+  <g>
+    <rect x="50" y="104" width="268" height="40" rx="10" fill="#f5f8fc" stroke="#dde5ee" stroke-width="1.5"/>
+    <circle cx="70" cy="124" r="6" fill="#3fa66a"/>
+    <rect x="86" y="117" width="72" height="9" rx="4.5" fill="#3d5a78"/>
+    <rect x="86" y="131" width="104" height="7" rx="3.5" fill="#b7c3d2"/>
+    <rect x="234" y="118" width="34" height="15" rx="7.5" fill="#247bbf"/>
+    <circle cx="259" cy="125.5" r="5" fill="#ffffff"/>
+  </g>
+
+  <g>
+    <rect x="50" y="152" width="268" height="40" rx="10" fill="#f5f8fc" stroke="#dde5ee" stroke-width="1.5"/>
+    <circle cx="70" cy="172" r="6" fill="#d9a12a"/>
+    <rect x="86" y="165" width="58" height="9" rx="4.5" fill="#3d5a78"/>
+    <rect x="86" y="179" width="120" height="7" rx="3.5" fill="#b7c3d2"/>
+    <rect x="234" y="166" width="34" height="15" rx="7.5" fill="#c3cfdd"/>
+    <circle cx="243" cy="173.5" r="5" fill="#ffffff"/>
+  </g>
+
+  <g>
+    <rect x="50" y="200" width="268" height="40" rx="10" fill="#f5f8fc" stroke="#dde5ee" stroke-width="1.5"/>
+    <circle cx="70" cy="220" r="6" fill="#97a6b8"/>
+    <rect x="86" y="213" width="66" height="9" rx="4.5" fill="#3d5a78"/>
+    <rect x="86" y="227" width="92" height="7" rx="3.5" fill="#b7c3d2"/>
+    <rect x="234" y="214" width="34" height="15" rx="7.5" fill="#c3cfdd"/>
+    <circle cx="243" cy="221.5" r="5" fill="#ffffff"/>
+  </g>
+
+  <!-- 连接箭头 -->
+  <path d="M352 150h44m-10-10 10 10-10 10" fill="none" stroke="#247bbf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 新增服务器对话框 -->
+  <rect x="410" y="52" width="196" height="196" rx="16" fill="#ffffff" stroke="#b7c3d2" stroke-width="2"/>
+  <rect x="428" y="72" width="92" height="10" rx="5" fill="#3d5a78"/>
+  <rect x="428" y="94" width="160" height="24" rx="7" fill="#f5f8fc" stroke="#cfd9e5" stroke-width="1.5"/>
+  <rect x="436" y="102" width="52" height="8" rx="4" fill="#b7c3d2"/>
+  <rect x="428" y="126" width="160" height="24" rx="7" fill="#f5f8fc" stroke="#cfd9e5" stroke-width="1.5"/>
+  <rect x="436" y="134" width="78" height="8" rx="4" fill="#b7c3d2"/>
+  <rect x="428" y="158" width="160" height="24" rx="7" fill="#f5f8fc" stroke="#cfd9e5" stroke-width="1.5"/>
+  <rect x="436" y="166" width="64" height="8" rx="4" fill="#b7c3d2"/>
+  <rect x="428" y="196" width="66" height="24" rx="8" fill="#f5f8fc" stroke="#cfd9e5" stroke-width="1.5"/>
+  <rect x="504" y="196" width="84" height="24" rx="8" fill="#247bbf"/>
+
+  <!-- 状态标记: 已连接 -->
+  <g transform="translate(566 208)">
+    <circle cx="0" cy="0" r="14" fill="#3fa66a"/>
+    <path d="M-6 0.5l4 4 8-8" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

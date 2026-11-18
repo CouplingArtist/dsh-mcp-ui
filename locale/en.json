@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "MCP servers",
+    "description": "Manage MCP servers from Web Settings (Settings → MCP): see every server's live connection status and tool count, add stdio or streamable-http servers, or import them from JSON (single object, array of objects, or a servers map; one atomic write, optionally overwriting existing names), edit command, arguments, environment, URL and headers, enable or disable them, test a connection without disturbing the running instance, restart a server, and delete entries. Writes go through the built-in MCP manager's config.servers, so changes reconcile immediately without restarting Harness. Servers that other plugins register appear read-only in the main list; statically mounted dsh-mcp-client rows (declared in the Cordis configuration) are listed separately, read-only, and names must not collide with them. Configuration values stay readable to this page, so keep secrets in the credential service and reference them as ${credential:REF}.",
+    "detail": "docs/DETAIL.md"
+  }
+}

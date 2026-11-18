@@ -1,0 +1,8 @@
+# dsh-mcp-manager-ui bundle layer: one plugin row.
+# Host half (package main) serves the loopback-only /api/mcp-manager routes that
+# read and write the built-in manager's volatile `servers` config and drive its
+# runtime list/probe/restart. Client half (package.json `dsh.client`) registers
+# the MCP page in Web Settings.
+- insert:
+    - id: mcp-manager-ui
+      name: dsh-mcp-manager-ui

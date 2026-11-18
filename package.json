@@ -1,0 +1,40 @@
+{
+  "name": "dsh-mcp-manager-ui",
+  "version": "0.1.0",
+  "description": "Web settings page for the built-in MCP server manager: live status, add, edit, enable, probe, restart and delete MCP servers",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "readme.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test tests/",
+    "check": "node --check index.js && node --check client.js"
+  },
+  "license": "MIT"
+}

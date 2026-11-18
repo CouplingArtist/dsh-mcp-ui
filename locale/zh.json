@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "MCP 服务器",
+    "description": "在 Web 设置界面（设置 → MCP）管理 MCP 服务器：查看每个服务器的实时连接状态与工具数量，新增 stdio 或 streamable-http 服务器，或从 JSON 批量导入（单个对象、对象数组、servers 映射，一次原子写入、可覆盖同名），编辑命令、参数、环境变量、URL 与请求头，启用或禁用，在不打扰运行中实例的前提下测试连接，重启服务器，以及删除条目。写入走内置 MCP 管理器的 config.servers，改动即时生效、无需重启 Harness。其他插件注册的服务器在主列表里只读；静态挂载的 dsh-mcp-client 行（写在 cordis 配置里）单独只读列出，名字不要与它们重复。配置值对本页可见，密钥请放进凭据服务并用 ${credential:REF} 引用。",
+    "detail": "docs/DETAIL.zh.md"
+  }
+}
