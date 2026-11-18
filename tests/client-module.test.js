@@ -315,6 +315,51 @@ test('probeFlags: 只在 running 期间显示测试中, 完成后按钮恢复并
   assert.deepEqual(plain(__test.probeFlags({ name: 'b', running: true, result: null }, 'a')), { probing: false, result: null })
 })
 
+test('图标操作按钮: 可访问名/tooltip 带服务器名, 图标 15px, 探测时显示旋转环', () => {
+  const { __test } = loadDefinition().factory(createFakeReact)
+
+  const edit = __test.IconButton({ label: '编辑 demo', onClick() {} }, __test.IconEdit())
+  assert.equal(edit.type, 'button')
+  assert.equal(edit.props.className, 'mcpui-btn mcpui-iconBtn')
+  assert.equal(edit.props['aria-label'], '编辑 demo')
+  assert.equal(edit.props.title, '编辑 demo')
+  assert.equal(edit.props.disabled, false)
+
+  const del = __test.IconButton({ label: '删除 demo', tone: 'danger', disabled: true }, __test.IconTrash())
+  assert.equal(del.props['data-tone'], 'danger')
+  assert.equal(del.props.disabled, true)
+
+  for (const factory of [__test.IconPlay, __test.IconSpinner, __test.IconRestart, __test.IconEdit, __test.IconTrash, __test.IconLock]) {
+    const icon = factory()
+    assert.equal(icon.type, 'svg')
+    assert.equal(icon.props.width, 15)
+    assert.equal(icon.props.viewBox, '0 0 16 16')
+    assert.equal(icon.props['aria-hidden'], 'true')
+  }
+
+  // 探测中: 旋转环 (圆环 + CSS 动画类), 结束后换回播放图标。
+  const spinner = __test.IconSpinner()
+  assert.equal(spinner.children[0].props.className, 'mcpui-spin')
+  assert.equal(__test.IconPlay().children[0].props.fill, 'currentColor')
+})
+
+test('字典: 中英文键集合一致且都非空', () => {
+  const definition = loadDefinition()
+  const react = createFakeReact()
+  const client = createClientContext(react)
+  definition.factory(() => react).apply(client)
+
+  const dicts = client.dictionaries[0].dicts
+  const zhKeys = Object.keys(dicts.zh).sort()
+  const enKeys = Object.keys(dicts.en).sort()
+  assert.deepEqual(enKeys, zhKeys)
+  for (const key of zhKeys) {
+    assert.equal(typeof dicts.zh[key], 'string')
+    assert.ok(dicts.zh[key].length > 0, `zh.${key} 为空`)
+    assert.ok(dicts.en[key].length > 0, `en.${key} 为空`)
+  }
+})
+
 test('draftFromEntry: 反向还原表单状态', () => {
   const { __test } = loadDefinition().factory(createFakeReact)
   const draft = __test.draftFromEntry('demo', {

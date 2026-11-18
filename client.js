@@ -434,7 +434,14 @@ window.__ModuleLoader__.load({
 .mcpui-state { flex: none; font-size: 12px; line-height: 18px; color: var(--dsw-alias-label-secondary); white-space: nowrap; }
 .mcpui-state[data-tone='error'] { color: var(--dsw-alias-state-error-primary); }
 .mcpui-state[data-tone='warn'] { color: var(--dsw-alias-state-warn-primary); }
-.mcpui-actions { display: inline-flex; flex: none; align-items: center; gap: 6px; }
+.mcpui-actions { display: inline-flex; flex: none; align-items: center; gap: 4px; }
+.mcpui-iconBtn { width: 26px; height: 26px; flex: none; padding: 0; border-color: transparent; color: var(--dsw-alias-label-secondary); }
+.mcpui-iconBtn:hover:not(:disabled) { background: var(--dsw-alias-bg-layer-2); color: var(--dsw-alias-label-primary); }
+.mcpui-iconBtn[data-tone='danger'] { color: var(--dsw-alias-state-error-primary); }
+.mcpui-iconBtn[data-tone='danger']:hover:not(:disabled) { background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent); }
+.mcpui-spin { transform-origin: 50% 50%; animation: mcpui-spin 900ms linear infinite; }
+@keyframes mcpui-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .mcpui-spin { animation-duration: 2400ms; } }
 .mcpui-details { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--dsw-alias-border-l2); padding: 10px 14px 12px; background: var(--dsw-alias-bg-module-platform, var(--dsw-alias-bg-layer-2)); font-size: 12px; line-height: 18px; }
 .mcpui-kv { display: flex; gap: 8px; min-width: 0; }
 .mcpui-kvKey { flex: none; width: 88px; color: var(--dsw-alias-label-secondary); }
@@ -472,7 +479,7 @@ window.__ModuleLoader__.load({
 .mcpui-inline > .mcpui-label { flex: 1; }
 .mcpui-formError { margin: 0; font-size: 12px; line-height: 18px; color: var(--dsw-alias-state-error-primary); }
 .mcpui-dialogActions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
-.mcpui-readonly { white-space: normal; text-align: right; }
+.mcpui-readonlyIcon { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 26px; height: 26px; color: var(--dsw-alias-label-tertiary); }
 @media (max-width: 768px) {
   .mcpui-cardRow { flex-wrap: wrap; }
   .mcpui-name { min-width: 72px; }
@@ -516,6 +523,103 @@ window.__ModuleLoader__.load({
         disabled: disabled === true,
         onClick: () => { onChange(!checked) },
       }, h('span', { className: 'mcpui-knob', 'aria-hidden': 'true' }))
+    }
+
+    /** 行内操作: 图标按钮, 可访问名与 tooltip 仍带完整文字。 */
+    function IconButton(props) {
+      const { label, tone, disabled, onClick, children } = props
+      return h('button', {
+        type: 'button',
+        className: 'mcpui-btn mcpui-iconBtn',
+        'data-tone': tone,
+        'aria-label': label,
+        title: label,
+        disabled: disabled === true,
+        onClick,
+      }, children)
+    }
+
+    const ICON_PROPS = {
+      viewBox: '0 0 16 16',
+      width: 15,
+      height: 15,
+      'aria-hidden': 'true',
+      focusable: 'false',
+      style: { display: 'block' },
+    }
+
+    function IconPlay() {
+      return h('svg', ICON_PROPS, h('path', { d: 'M5.6 3.9 12.2 8l-6.6 4.1z', fill: 'currentColor' }))
+    }
+
+    function IconSpinner() {
+      return h('svg', ICON_PROPS, h('circle', {
+        cx: 8,
+        cy: 8,
+        r: 5.2,
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: 1.8,
+        strokeDasharray: '20 14',
+        strokeLinecap: 'round',
+        className: 'mcpui-spin',
+      }))
+    }
+
+    function IconRestart() {
+      return h('svg', ICON_PROPS,
+        h('path', {
+          d: 'M12.4 8a4.4 4.4 0 1 1-1.3-3.1',
+          fill: 'none',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+        }),
+        h('path', {
+          d: 'M12.6 2.9v3.2H9.4',
+          fill: 'none',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round',
+        }))
+    }
+
+    function IconEdit() {
+      return h('svg', ICON_PROPS,
+        h('path', {
+          d: 'M10.6 2.9 13.1 5.4 5.9 12.6H3.4V10.1z',
+          fill: 'none',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinejoin: 'round',
+        }),
+        h('path', { d: 'M9.2 4.3l2.5 2.5', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5 }))
+    }
+
+    function IconTrash() {
+      return h('svg', ICON_PROPS, h('path', {
+        d: 'M3.2 4.6h9.6M6.3 4.6V2.9h3.4v1.7M4.7 4.6l.5 8.5h5.6l.5-8.5',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: 1.5,
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      }))
+    }
+
+    function IconLock() {
+      return h('svg', ICON_PROPS,
+        h('rect', {
+          x: 3.4, y: 7, width: 9.2, height: 6.4, rx: 1.4, fill: 'none', stroke: 'currentColor', strokeWidth: 1.5,
+        }),
+        h('path', {
+          d: 'M5.6 7V5.4a2.4 2.4 0 0 1 4.8 0V7',
+          fill: 'none',
+          stroke: 'currentColor',
+          strokeWidth: 1.5,
+          strokeLinecap: 'round',
+        }))
     }
 
     function Field(props) {
@@ -1361,38 +1465,39 @@ window.__ModuleLoader__.load({
               h('span', { className: 'mcpui-state', 'data-tone': status.tone }, status.label)),
               h('span', { className: 'mcpui-actions' },
                 readOnly
-                  ? h('span', { className: 'mcpui-state mcpui-readonly' }, t('readOnlyRegistered'))
+                  ? h('span', {
+                    className: 'mcpui-readonlyIcon',
+                    role: 'img',
+                    'aria-label': t('readOnlyRegistered'),
+                    title: t('readOnlyRegistered'),
+                  }, h(IconLock))
                   : h(Toggle, {
                     checked: server.enabled,
                     disabled: !writable || busyRow,
                     label: fill(t('toggleLabel'), { name: server.name }),
                     onChange: (next) => { onToggle(server, next) },
                   }),
-                h(Button, {
-                  size: 'sm',
+                h(IconButton, {
+                  label: probing ? `${t('testing')} ${server.name}` : `${t('test')} ${server.name}`,
                   disabled: !managerReady || busyRow,
-                  ariaLabel: `${t('test')} ${server.name}`,
                   onClick: () => { onProbe(server) },
-                }, probing ? t('testing') : t('test')),
-                h(Button, {
-                  size: 'sm',
+                }, probing ? h(IconSpinner) : h(IconPlay)),
+                h(IconButton, {
+                  label: `${t('restart')} ${server.name}`,
                   disabled: !managerReady || readOnly || server.enabled === false || busyRow,
-                  ariaLabel: `${t('restart')} ${server.name}`,
                   onClick: () => { onRestart(server) },
-                }, t('restart')),
-                h(Button, {
-                  size: 'sm',
+                }, h(IconRestart)),
+                h(IconButton, {
+                  label: `${t('edit')} ${server.name}`,
                   disabled: !writable || readOnly || busyRow,
-                  ariaLabel: `${t('edit')} ${server.name}`,
                   onClick: () => { setDialogError(null); setDialog({ kind: 'edit', server }) },
-                }, t('edit')),
-                h(Button, {
-                  size: 'sm',
-                  variant: 'danger',
+                }, h(IconEdit)),
+                h(IconButton, {
+                  label: `${t('delete')} ${server.name}`,
+                  tone: 'danger',
                   disabled: !writable || !removable || busyRow,
-                  ariaLabel: `${t('delete')} ${server.name}`,
                   onClick: () => { setDialogError(null); setDialog({ kind: 'delete', server }) },
-                }, t('delete')))),
+                }, h(IconTrash)))),
             open
               ? h('div', { className: 'mcpui-details' },
                 readOnly
@@ -1592,8 +1697,23 @@ window.__ModuleLoader__.load({
       name: 'mcp-manager-ui',
       inject: ['slots', 'locale'],
       apply,
-      /** 仅供 node 侧测试使用的纯函数钩子 (不参与运行时注册)。 */
-      __test: { emptyDraft, draftFromEntry, draftToEntry, mergeForSave, linesToRecord, parseImport, probeFlags },
+      /** 仅供 node 侧测试使用的纯函数/组件钩子 (不参与运行时注册)。 */
+      __test: {
+        emptyDraft,
+        draftFromEntry,
+        draftToEntry,
+        mergeForSave,
+        linesToRecord,
+        parseImport,
+        probeFlags,
+        IconButton,
+        IconPlay,
+        IconSpinner,
+        IconRestart,
+        IconEdit,
+        IconTrash,
+        IconLock,
+      },
     }
   },
 })
