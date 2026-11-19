@@ -401,9 +401,10 @@ window.__ModuleLoader__.load({
 .mcpui-btn:disabled { opacity: 0.55; cursor: default; }
 .mcpui-btn:focus-visible { outline: 2px solid var(--dsw-alias-brand-primary); outline-offset: 1px; }
 .mcpui-btn[data-variant='primary'] { background: var(--dsw-alias-brand-primary); border-color: var(--dsw-alias-brand-primary); color: var(--dsw-alias-bg-base); }
-.mcpui-btn[data-variant='primary']:hover:not(:disabled) { filter: brightness(1.06); }
+.mcpui-btn[data-variant='primary']:hover:not(:disabled) { background: var(--dsw-alias-brand-primary); filter: brightness(1.08); }
 .mcpui-btn[data-variant='danger'] { color: var(--dsw-alias-state-error-primary); border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent); }
 .mcpui-btn[data-variant='danger'][data-solid='true'] { background: var(--dsw-alias-state-error-primary); border-color: var(--dsw-alias-state-error-primary); color: var(--dsw-alias-bg-base); }
+.mcpui-btn[data-variant='danger'][data-solid='true']:hover:not(:disabled) { background: var(--dsw-alias-state-error-primary); filter: brightness(0.92); }
 .mcpui-btn[data-size='sm'] { padding: 3px 9px; font-size: 12px; line-height: 16px; }
 .mcpui-note { margin: 0; font-size: 12px; line-height: 18px; color: var(--dsw-alias-label-secondary); }
 .mcpui-notice { margin: 0; border-radius: 8px; padding: 6px 12px; font-size: 13px; line-height: 20px; }
@@ -1706,6 +1707,7 @@ window.__ModuleLoader__.load({
         linesToRecord,
         parseImport,
         probeFlags,
+        CSS,
         IconButton,
         IconPlay,
         IconSpinner,

@@ -48,7 +48,7 @@ dsh plugin --profile <profile> add file:G:\G10_Projects\P20_Person\P50_AI_Coding
 
 ```powershell
 node tests/host.test.js          # 23 项宿主侧测试 (校验 / 合并 / 导入 / HTTP 路由与错误码), 无需额外依赖
-node tests/client-module.test.js  # 12 项客户端测试 (加载真实模块、渲染首屏、草稿/合并/导入解析/图标按钮)
+node tests/client-module.test.js  # 13 项客户端测试 (加载真实模块、渲染首屏、草稿/合并/导入解析/图标按钮/按钮悬停)
 node --check client.js            # 客户端纯 JS, 无构建步骤
 ```
 

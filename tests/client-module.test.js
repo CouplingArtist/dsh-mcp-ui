@@ -343,6 +343,33 @@ test('图标操作按钮: 可访问名/tooltip 带服务器名, 图标 15px, 探
   assert.equal(__test.IconPlay().children[0].props.fill, 'currentColor')
 })
 
+test('按钮悬停: 主按钮悬停不改底色 (回归: 通用 hover 规则曾覆盖品牌色, 文字消失)', () => {
+  const { __test } = loadDefinition().factory(createFakeReact)
+  const css = __test.CSS
+  const rule = selector => {
+    const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const match = css.match(new RegExp(`${escaped}\\s*\\{[^}]*\\}`))
+    return match === null ? null : match[0]
+  }
+
+  // 通用悬停只为次要按钮提供底色 (~0,3,0)。
+  const genericHover = rule('.mcpui-btn:hover:not(:disabled)')
+  assert.ok(genericHover !== null, '缺少通用悬停规则')
+  assert.match(genericHover, /background:\s*var\(--dsw-alias-bg-layer-2\)/)
+
+  // 主按钮的悬停规则 (~0,4,0) 必须重新声明品牌底色, 否则会被通用规则改成浅灰层,
+  // 而文字色仍是 --dsw-alias-bg-base (浅色主题接近白色) -> 白字灰底。
+  const primaryHover = rule(".mcpui-btn[data-variant='primary']:hover:not(:disabled)")
+  assert.ok(primaryHover !== null, '缺少主按钮悬停规则')
+  assert.match(primaryHover, /background:\s*var\(--dsw-alias-brand-primary\)/)
+  assert.match(primaryHover, /filter:\s*brightness\(/)
+
+  // 实心危险按钮同样需要显式悬停规则, 否则与通用规则同特异性时没有反馈。
+  const dangerHover = rule(".mcpui-btn[data-variant='danger'][data-solid='true']:hover:not(:disabled)")
+  assert.ok(dangerHover !== null, '缺少实心危险按钮悬停规则')
+  assert.match(dangerHover, /background:\s*var\(--dsw-alias-state-error-primary\)/)
+})
+
 test('字典: 中英文键集合一致且都非空', () => {
   const definition = loadDefinition()
   const react = createFakeReact()
