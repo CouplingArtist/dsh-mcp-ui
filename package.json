@@ -1,6 +1,6 @@
 {
   "name": "dsh-mcp-manager-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Web settings page for the built-in MCP server manager: live status, add, edit, enable, probe, restart and delete MCP servers",
   "type": "module",
   "main": "index.js",
