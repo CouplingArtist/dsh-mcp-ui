@@ -12,6 +12,15 @@
     "settings",
     "plugin"
   ],
+  "author": "CouplingArtist",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CouplingArtist/dsh-mcp-ui.git"
+  },
+  "homepage": "https://github.com/CouplingArtist/dsh-mcp-ui#readme",
+  "bugs": {
+    "url": "https://github.com/CouplingArtist/dsh-mcp-ui/issues"
+  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
@@ -26,7 +35,8 @@
     "locale/*.json",
     "docs",
     "icon.svg",
-    "readme.md"
+    "readme.md",
+    "LICENSE"
   ],
   "dsh": {
     "bundle": {
