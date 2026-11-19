@@ -1,9 +1,17 @@
 {
-  "name": "dsh-mcp-manager-ui",
+  "name": "dsh-mcp-ui",
   "version": "1.0.2",
-  "description": "Web settings page for the built-in MCP server manager: live status, add, edit, enable, probe, restart and delete MCP servers",
+  "description": "MCP server management page for DeepSeek Harness Web Settings: live status, add/edit/enable/probe/restart/delete, and JSON import",
   "type": "module",
   "main": "index.js",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "mcp",
+    "mcp-server",
+    "settings",
+    "plugin"
+  ],
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",

@@ -1,4 +1,4 @@
-# dsh-mcp-manager-ui
+# dsh-mcp-ui
 
 一个 DeepSeek Harness 用户安装插件，在 Web 设置界面提供 MCP 服务器的管理页（设置 → MCP）。它不持有自己的配置存储：读写的都是内置 `@deepseek-ai/dsh-mcp-manager` 的 `config.servers`。
 

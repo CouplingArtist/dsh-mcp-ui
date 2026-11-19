@@ -94,7 +94,7 @@ function collectText(node, out = []) {
 
 test('client.js 外层结构: id 与工厂', () => {
   const definition = loadDefinition()
-  assert.equal(definition.id, 'dsh-mcp-manager-ui')
+  assert.equal(definition.id, 'dsh-mcp-ui')
   assert.equal(typeof definition.factory, 'function')
 })
 
@@ -105,7 +105,7 @@ test('apply: 注册 settings.section 与导航图标, 并加载双语文案', ()
     assert.equal(name, 'react')
     return react
   })
-  assert.equal(clientModule.name, 'mcp-manager-ui')
+  assert.equal(clientModule.name, 'mcp-ui')
   // vm 里创建的数组与本 realm 原型不同, 用字符串比较。
   assert.equal([...clientModule.inject].join(','), 'slots,locale')
 

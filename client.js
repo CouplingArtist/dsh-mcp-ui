@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-  id: 'dsh-mcp-manager-ui',
+  id: 'dsh-mcp-ui',
   factory(require) {
     const React = require('react')
     const h = React.createElement
@@ -1671,7 +1671,7 @@ window.__ModuleLoader__.load({
     // ---------------------------------------------------------------- 注册
 
     function apply(ctx) {
-      ctx.effect(() => ctx.locale.register(NS, { zh, en }), 'mcp-manager-ui: dictionaries')
+      ctx.effect(() => ctx.locale.register(NS, { zh, en }), 'mcp-ui: dictionaries')
       const t = ctx.locale.bind(NS)
 
       // 语言切换时重新渲染页面 (label 由 shell 每次投影时重新读取)。
@@ -1695,7 +1695,7 @@ window.__ModuleLoader__.load({
     }
 
     return {
-      name: 'mcp-manager-ui',
+      name: 'mcp-ui',
       inject: ['slots', 'locale'],
       apply,
       /** 仅供 node 侧测试使用的纯函数/组件钩子 (不参与运行时注册)。 */
