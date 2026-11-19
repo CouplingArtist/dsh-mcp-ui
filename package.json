@@ -1,6 +1,6 @@
 {
   "name": "dsh-mcp-ui",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "MCP server management page for DeepSeek Harness Web Settings: live status, add/edit/enable/probe/restart/delete, and JSON import",
   "type": "module",
   "main": "index.js",
